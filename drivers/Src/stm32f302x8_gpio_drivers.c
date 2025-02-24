@@ -204,13 +204,13 @@ uint16_t GPIO_Read_In_Port(GPIO_REG_t *pGPIOx){
 
 
 /* ==========================================================================
- * Function			: GPIO_Init
+ * Function			: GPIO_Write_Out_Pin
  *
- * Description		: Enable or Disable peripheral clock for GPIO port
+ * Description		: Write data into GPIO pin
  *
  * Parameter[in]	: base address of the GPIO
- * Parameter[in]	: Enable or Disable
- * Parameter[in]	:
+ * Parameter[in]	: Pin number
+ * Parameter[in]	: Value
  *
  * Return			: None
  *
@@ -219,16 +219,22 @@ uint16_t GPIO_Read_In_Port(GPIO_REG_t *pGPIOx){
 
 void GPIO_Write_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber, uint8_t Value){
 
+	if (Value == GPIO_PIN_SET) {
+		pGPIOx->ODR |=  (1 << PinNumber);
+	} else {
+		pGPIOx->ODR &=  ~(1 << PinNumber);
+	}
+
 }
 
 
 /* ==========================================================================
- * Function			: GPIO_Init
+ * Function			: GPIO_Write_Out_Port
  *
- * Description		: Enable or Disable peripheral clock for GPIO port
+ * Description		: Write data into GPIO port
  *
  * Parameter[in]	: base address of the GPIO
- * Parameter[in]	: Enable or Disable
+ * Parameter[in]	: Value
  * Parameter[in]	:
  *
  * Return			: None
@@ -237,6 +243,8 @@ void GPIO_Write_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber, uint8_t Value){
  */
 
 void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value){
+
+	pGPIOx->ODR =  Value;
 
 }
 
