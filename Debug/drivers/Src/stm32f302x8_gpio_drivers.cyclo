@@ -1,0 +1,10 @@
+../drivers/Src/stm32f302x8_gpio_drivers.c:24:6:GPIO_Init	4
+../drivers/Src/stm32f302x8_gpio_drivers.c:96:6:GPIO_DeInit	6
+../drivers/Src/stm32f302x8_gpio_drivers.c:125:6:GPIO_PCLK_CTRL	12
+../drivers/Src/stm32f302x8_gpio_drivers.c:172:9:GPIO_Read_In_Pin	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:192:10:GPIO_Read_In_Port	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:211:6:GPIO_Write_Out_Pin	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:230:6:GPIO_Write_Out_Port	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:249:6:GPIO_Toggle_Out_Pin	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:268:6:GPIO_IRQ_Config	1
+../drivers/Src/stm32f302x8_gpio_drivers.c:287:6:GPIO_IRQ_Handling	1
