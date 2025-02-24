@@ -30,6 +30,9 @@ void delay(void) {
 
 int main(void)
 {
+
+	// LED test, this is test
+
 	GPIOx_Handle_t GPIO_LED;	GPIO_LED.pGPIOx = GPIOB; //GPIOA;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13; //GPIO_PIN_5;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
