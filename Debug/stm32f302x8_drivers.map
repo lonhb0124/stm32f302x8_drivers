@@ -284,20 +284,20 @@ Discarded input sections
  .text.GPIO_PCLK_CTRL
                 0x00000000      0x10c ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_Read_In_Pin
-                0x00000000       0x18 ./drivers/Src/stm32f302x8_gpio_drivers.o
+                0x00000000       0x2a ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_Read_In_Port
-                0x00000000       0x14 ./drivers/Src/stm32f302x8_gpio_drivers.o
- .text.GPIO_Write_Out_Pin
                 0x00000000       0x1a ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .text.GPIO_Write_Out_Pin
+                0x00000000       0x48 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_Write_Out_Port
-                0x00000000       0x16 ./drivers/Src/stm32f302x8_gpio_drivers.o
+                0x00000000       0x1c ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_Toggle_Out_Pin
-                0x00000000       0x16 ./drivers/Src/stm32f302x8_gpio_drivers.o
+                0x00000000       0x28 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_IRQ_Config
                 0x00000000       0x1c ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_IRQ_Handling
                 0x00000000       0x14 ./drivers/Src/stm32f302x8_gpio_drivers.o
- .debug_info    0x00000000      0x4bd ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_info    0x00000000      0x4dc ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_abbrev  0x00000000      0x115 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_aranges
                 0x00000000       0x68 ./drivers/Src/stm32f302x8_gpio_drivers.o
@@ -313,8 +313,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x1df ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_macro   0x00000000      0x203 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_macro   0x00000000       0xbe ./drivers/Src/stm32f302x8_gpio_drivers.o
- .debug_line    0x00000000      0x763 ./drivers/Src/stm32f302x8_gpio_drivers.o
- .debug_str     0x00000000     0x4e40 ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_line    0x00000000      0x7a2 ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_str     0x00000000     0x4e46 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .comment       0x00000000       0x44 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_frame   0x00000000      0x1a0 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .ARM.attributes

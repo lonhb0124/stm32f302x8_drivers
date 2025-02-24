@@ -172,7 +172,7 @@ void GPIO_PCLK_CTRL(GPIO_REG_t *pGPIOx, uint8_t EnDi){
 uint8_t GPIO_Read_In_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
 
 	uint8_t value;
-	value = (uint8_t) (pGPIOx->IDR >> PinNumber) &= ~(0xFE); // 0x00000001
+	value = (uint8_t) ((pGPIOx->IDR >> PinNumber) & ~(0xFE)); // 0x00000001
 
 	return value;
 }
@@ -250,12 +250,12 @@ void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value){
 
 
 /* ==========================================================================
- * Function			: GPIO_Init
+ * Function			: GPIO_Toggle_Out_Pin
  *
- * Description		: Enable or Disable peripheral clock for GPIO port
+ * Description		: Toggle GPIO pin
  *
  * Parameter[in]	: base address of the GPIO
- * Parameter[in]	: Enable or Disable
+ * Parameter[in]	: Pin number
  * Parameter[in]	:
  *
  * Return			: None
@@ -264,7 +264,9 @@ void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value){
  */
 
 void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
-// branch - 1
+
+	pGPIOx->ODR ^= (1 << PinNumber);
+
 }
 
 
@@ -283,7 +285,7 @@ void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
  */
 
 void GPIO_IRQ_Config(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnDi){
-// branch - 2
+
 }
 
 

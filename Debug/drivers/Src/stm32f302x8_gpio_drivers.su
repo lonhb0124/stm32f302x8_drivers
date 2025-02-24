@@ -1,10 +1,10 @@
 ../drivers/Src/stm32f302x8_gpio_drivers.c:24:6:GPIO_Init	24	static
 ../drivers/Src/stm32f302x8_gpio_drivers.c:96:6:GPIO_DeInit	16	static
 ../drivers/Src/stm32f302x8_gpio_drivers.c:125:6:GPIO_PCLK_CTRL	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:172:9:GPIO_Read_In_Pin	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:192:10:GPIO_Read_In_Port	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:211:6:GPIO_Write_Out_Pin	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:230:6:GPIO_Write_Out_Port	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:249:6:GPIO_Toggle_Out_Pin	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:268:6:GPIO_IRQ_Config	16	static
-../drivers/Src/stm32f302x8_gpio_drivers.c:287:6:GPIO_IRQ_Handling	16	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:172:9:GPIO_Read_In_Pin	24	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:196:10:GPIO_Read_In_Port	24	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:220:6:GPIO_Write_Out_Pin	16	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:245:6:GPIO_Write_Out_Port	16	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:266:6:GPIO_Toggle_Out_Pin	16	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:287:6:GPIO_IRQ_Config	16	static
+../drivers/Src/stm32f302x8_gpio_drivers.c:306:6:GPIO_IRQ_Handling	16	static
