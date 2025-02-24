@@ -21,7 +21,7 @@
 
 void delay(void) {
 
-	for (uint32_t i = 0; i < 500000; i++);
+	for (uint32_t i = 0; i < 500000/2; i++);
 }
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -33,14 +33,15 @@ int main(void)
 
 	// LED test
 
-	GPIOx_Handle_t GPIO_LED;	GPIO_LED.pGPIOx = GPIOB; //GPIOA;
+	GPIOx_Handle_t GPIO_LED, GPIO_LED2, GPIO_BUTTON;
+	GPIO_LED.pGPIOx = GPIOB; //GPIOA;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13; //GPIO_PIN_5;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_OP_HIGH;
-	GPIO_LED.GPIO_PinConfig.GPIO_Pin_OPType = GPIO_OP_TYPE_PP;
-	GPIO_LED.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_OPType = GPIO_OP_TYPE_PP; // GPIO_OP_TYPE_OD;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;; //GPIO_PIN_PU;
 
-	GPIOx_Handle_t GPIO_LED2;
+
 	GPIO_LED2.pGPIOx = GPIOB; //GPIOB;
 	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_14; //GPIO_PIN_14;
 	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
@@ -48,17 +49,30 @@ int main(void)
 	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_OPType = GPIO_OP_TYPE_PP;
 	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
 
+	GPIO_BUTTON.pGPIOx = GPIOC;
+	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13;
+	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_IN;
+	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_OP_HIGH;
+	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
+
 	GPIO_PCLK_CTRL(GPIOB, ENABLE);
+	GPIO_PCLK_CTRL(GPIOC, ENABLE);
 
 	GPIO_Init(&GPIO_LED);
 	GPIO_Init(&GPIO_LED2);
+	GPIO_Init(&GPIO_BUTTON);
     /* Loop forever */
 	while(1) {
 		//GPIO_Toggle_Out_Pin(GPIOA, GPIO_PIN_5);
-		GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_13);
-		delay();
-		GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
-		delay();
+
+		if (GPIO_Read_In_Pin(GPIOC, GPIO_PIN_13)) {
+			delay();
+			GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_13);
+		}
+		else {
+			delay();
+			GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
+		}
 	}
 
 }
