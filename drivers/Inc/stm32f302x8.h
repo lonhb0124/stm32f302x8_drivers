@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 
+
 #define FLASH_BASE_ADDR		0x08000000U // 32KB to 64KB
 #define SRAM_BASE_ADDR		0x20000000U // 16KB
 #define ROM_BASE_ADDR		0x1FFFD800U // 8KB System memory
@@ -214,5 +215,7 @@ typedef struct {
 #define RESET				DISABLE
 #define GPIO_PIN_SET		SET
 #define GPIO_PIN_RESET		RESET
+
+#include "stm32f302x8_gpio_drivers.h"
 
 #endif /* INC_STM32F302X8_H_ */

@@ -19,12 +19,43 @@
 #include <stdint.h>
 #include "stm32f302x8.h"
 
+void delay(void) {
+
+	for (uint32_t i = 0; i < 500000; i++);
+}
+
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
 int main(void)
 {
+	GPIOx_Handle_t GPIO_LED;	GPIO_LED.pGPIOx = GPIOB; //GPIOA;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13; //GPIO_PIN_5;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_OP_HIGH;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_OPType = GPIO_OP_TYPE_PP;
+	GPIO_LED.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
+
+	GPIOx_Handle_t GPIO_LED2;
+	GPIO_LED2.pGPIOx = GPIOB; //GPIOB;
+	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_14; //GPIO_PIN_14;
+	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
+	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_OP_HIGH;
+	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_OPType = GPIO_OP_TYPE_PP;
+	GPIO_LED2.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
+
+	GPIO_PCLK_CTRL(GPIOB, ENABLE);
+
+	GPIO_Init(&GPIO_LED);
+	GPIO_Init(&GPIO_LED2);
     /* Loop forever */
-	for(;;);
+	while(1) {
+		//GPIO_Toggle_Out_Pin(GPIOA, GPIO_PIN_5);
+		GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_13);
+		delay();
+		GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
+		delay();
+	}
+
 }

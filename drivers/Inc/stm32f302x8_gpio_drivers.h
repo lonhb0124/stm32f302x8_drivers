@@ -13,7 +13,7 @@
 typedef struct {
 	uint8_t GPIO_Pin_Number; 	// 0 ~ 15
 	uint8_t GPIO_Pin_Mode;		// GPIO MODE
-	uint8_t GPIO_Pin_Speed;		// GPIO SOUTPUT SPEED
+	uint8_t GPIO_Pin_Speed;		// GPIO OUTPUT SPEED
 	uint8_t GPIO_Pin_PuPd;		// GPIO PULL UP DOWN
 	uint8_t GPIO_Pin_OPType; 	// GPIO OUTPUT TYPES
 	uint8_t GPIO_Pin_AltFun;	// GPIO Alternative MODE
