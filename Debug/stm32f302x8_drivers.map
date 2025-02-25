@@ -287,7 +287,7 @@ Discarded input sections
  .text.GPIO_Write_Out_Port
                 0x00000000       0x1c ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_IRQ_Config
-                0x00000000       0x1c ./drivers/Src/stm32f302x8_gpio_drivers.o
+                0x00000000      0x104 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .text.GPIO_IRQ_Handling
                 0x00000000       0x14 ./drivers/Src/stm32f302x8_gpio_drivers.o
  .debug_macro   0x00000000      0xab4 ./drivers/Src/stm32f302x8_gpio_drivers.o
@@ -835,15 +835,15 @@ LOAD C:/ST/STM32CubeIDE_1.16.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x00000050       0x68 ./drivers/Src/stm32f302x8_gpio_drivers.o
 
 .debug_rnglists
-                0x00000000       0x8c
+                0x00000000       0x8d
  .debug_rnglists
                 0x00000000       0x1a ./Src/main.o
  .debug_rnglists
                 0x0000001a       0x19 ./Startup/startup_stm32f302r8tx.o
  .debug_rnglists
-                0x00000033       0x59 ./drivers/Src/stm32f302x8_gpio_drivers.o
+                0x00000033       0x5a ./drivers/Src/stm32f302x8_gpio_drivers.o
 
-.debug_macro    0x00000000     0x14f1
+.debug_macro    0x00000000     0x15b7
  .debug_macro   0x00000000       0x80 ./Src/main.o
  .debug_macro   0x00000080      0xab4 ./Src/main.o
  .debug_macro   0x00000b34       0x22 ./Src/main.o
@@ -852,23 +852,23 @@ LOAD C:/ST/STM32CubeIDE_1.16.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x00000c35      0x103 ./Src/main.o
  .debug_macro   0x00000d38       0x6a ./Src/main.o
  .debug_macro   0x00000da2      0x1df ./Src/main.o
- .debug_macro   0x00000f81      0x219 ./Src/main.o
- .debug_macro   0x0000119a       0xbe ./Src/main.o
- .debug_macro   0x00001258       0x86 ./drivers/Src/stm32f302x8_gpio_drivers.o
- .debug_macro   0x000012de      0x213 ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_macro   0x00000f81      0x27c ./Src/main.o
+ .debug_macro   0x000011fd       0xbe ./Src/main.o
+ .debug_macro   0x000012bb       0x86 ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_macro   0x00001341      0x276 ./drivers/Src/stm32f302x8_gpio_drivers.o
 
-.debug_line     0x00000000      0xe52
+.debug_line     0x00000000      0xeec
  .debug_line    0x00000000      0x500 ./Src/main.o
  .debug_line    0x00000500       0x7b ./Startup/startup_stm32f302r8tx.o
- .debug_line    0x0000057b      0x8d7 ./drivers/Src/stm32f302x8_gpio_drivers.o
+ .debug_line    0x0000057b      0x971 ./drivers/Src/stm32f302x8_gpio_drivers.o
 
-.debug_str      0x00000000     0x4e63
- .debug_str     0x00000000     0x4c6f ./Src/main.o
-                               0x4ddb (size before relaxing)
- .debug_str     0x00004c6f       0x3f ./Startup/startup_stm32f302r8tx.o
+.debug_str      0x00000000     0x5020
+ .debug_str     0x00000000     0x4e2c ./Src/main.o
+                               0x4f98 (size before relaxing)
+ .debug_str     0x00004e2c       0x3f ./Startup/startup_stm32f302r8tx.o
                                  0x91 (size before relaxing)
- .debug_str     0x00004cae      0x1b5 ./drivers/Src/stm32f302x8_gpio_drivers.o
-                               0x4f61 (size before relaxing)
+ .debug_str     0x00004e6b      0x1b5 ./drivers/Src/stm32f302x8_gpio_drivers.o
+                               0x511e (size before relaxing)
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Src/main.o
