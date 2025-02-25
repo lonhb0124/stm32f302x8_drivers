@@ -10,6 +10,21 @@
 
 #include <stdint.h>
 
+/* Arm Coretex M4 NVIC ISERx address */
+
+#define NVIC_ISER0			((volatile uint32_t*)0xE000E100)
+#define NVIC_ISER1			((volatile uint32_t*)0xE000E104)
+#define NVIC_ISER2			((volatile uint32_t*)0xE000E108)
+#define NVIC_ISER3			((volatile uint32_t*)0xE000E10C)
+
+/* Arm Coretex M4 NVIC ICERx address */
+
+#define NVIC_ICER0			((volatile uint32_t*)0XE000E180)
+#define NVIC_ICER1			((volatile uint32_t*)0XE000E184)
+#define NVIC_ICER2			((volatile uint32_t*)0XE000E188)
+#define NVIC_ICER3			((volatile uint32_t*)0XE000E18C)
+
+/* BASE address */
 
 #define FLASH_BASE_ADDR		0x08000000U // 32KB to 64KB
 #define SRAM_BASE_ADDR		0x20000000U // 16KB

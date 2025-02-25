@@ -310,6 +310,37 @@ void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
 
 void GPIO_IRQ_Config(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnDi){
 
+	if (EnDi == ENABLE) {
+		if (IRQNumber <= 31) {
+			// ISER0
+			*NVIC_ISER0 |= (1 << IRQNumber);
+
+		} else if (IRQNumber > 31 && IRQNumber <= 63) {
+			// ISER1
+			*NVIC_ISER1 |= (1 << (IRQNumber % 32));
+
+		} else if (IRQNumber > 64 && IRQNumber <= 95) {
+			// ISER2
+			*NVIC_ISER2 |= (1 << (IRQNumber % 64));
+
+		}
+	}
+
+	else {
+		if (IRQNumber <= 31) {
+			// ICER0
+			*NVIC_ICER0 |= (1 << IRQNumber);
+
+		} else if (IRQNumber > 31 && IRQNumber <= 63) {
+			// ICER1
+			*NVIC_ICER0 |= (1 << (IRQNumber % 32));
+
+		} else if (IRQNumber > 64 && IRQNumber <= 95) {
+			// ICER2
+			*NVIC_ICER0 |= (1 << (IRQNumber % 64));
+
+		}
+	}
 }
 
 
