@@ -33,7 +33,31 @@ void GPIO_Init(GPIOx_Handle_t *pGPIOHandle) {
 		pGPIOHandle->pGPIOx->MODER |= temp; // setting
 
 	} else {
-		// interrupt mode
+
+		// 1.1 configure interrupt mode
+		if (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Mode == GPIO_MODE_IT_FT) {
+			// falling edge
+			EXTI->FTSR1 |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+			EXTI->RTSR1 &= ~(1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+
+		} else if (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Mode == GPIO_MODE_IT_RT) {
+			// rising edge
+			EXTI->FTSR1 &= ~(1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+			EXTI->RTSR1 |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+		} else if (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Mode == GPIO_MODE_IT_RFT) {
+			// both falling and rising edge
+			EXTI->FTSR1 |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+			EXTI->RTSR1 |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
+		}
+
+		// 1.2 configure the GPIO port selection in SYSCFG
+		uint8_t temp_1 = (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number) / 4;
+		uint8_t temp_2 = (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number) % 4;
+		uint8_t port = GPIO_BASE_ADDR_TO_PORT(pGPIOHandle->pGPIOx);
+		SYSCFG_PCLK_EN();
+		SYSCFG->EXTICR[temp_1] = port << (temp_2 * 4);
+		// 1.3 enable the EXTI interrupt delivery using IMR
+		EXTI->IMR1 |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Number);
 	}
 	temp = 0;
 
