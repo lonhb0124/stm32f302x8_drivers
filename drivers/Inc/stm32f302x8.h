@@ -71,6 +71,24 @@ typedef struct {
 #define GPIOD 				((GPIO_REG_t*) GPIOD_BASE_ADDR)
 #define GPIOF 				((GPIO_REG_t*) GPIOF_BASE_ADDR)
 
+/* EXTI structure */
+typedef struct {
+	volatile uint32_t IMR1;
+	volatile uint32_t EMR1;
+	volatile uint32_t RTSR1;
+	volatile uint32_t FTSR1;
+	volatile uint32_t SWER1;
+	volatile uint32_t PR1;
+	volatile uint32_t IMR2;
+	volatile uint32_t EMR2;
+	volatile uint32_t RTSR2;
+	volatile uint32_t FTSR2;
+	volatile uint32_t SWER2;
+	volatile uint32_t PR2;
+} EXTI_REG_t;
+
+#define EXTI 				((EXTI_REG_t*) EXTI_BASE_ADDR)
+
 /* RCC structure */
 typedef struct {
 	volatile uint32_t CR;
@@ -148,10 +166,7 @@ typedef struct {
 typedef struct {
 	volatile uint32_t CFGR1;
 	uint32_t RESERVED0;
-	volatile uint32_t EXTICR1;
-	volatile uint32_t EXTICR2;
-	volatile uint32_t EXTICR3;
-	volatile uint32_t EXTICR4;
+	volatile uint32_t EXTICR[4];
 	volatile uint32_t CFGR2;
 } SYSCFG_REG_t;
 
@@ -208,6 +223,23 @@ typedef struct {
 #define GPIOC_REG_RESET()	do {(RCC->AHBRSTR |= (1 << 19)); (RCC->AHBRSTR &= ~(1 << 19));} while(0)
 #define GPIOD_REG_RESET()	do {(RCC->AHBRSTR |= (1 << 20)); (RCC->AHBRSTR &= ~(1 << 20));} while(0)
 #define GPIOF_REG_RESET()	do {(RCC->AHBRSTR |= (1 << 22)); (RCC->AHBRSTR &= ~(1 << 22));} while(0)
+
+/* Return port code based on GPIOx */
+#define GPIO_BASE_ADDR_TO_PORT(x)	((x == GPIOA) ? 0 :\
+									(x == GPIOB) ? 1 :\
+									(x == GPIOC) ? 2 :\
+									(x == GPIOD) ? 3 :\
+									(x == GPIOF) ? 4 : 0)
+
+
+/* IRQ numbers of STM32F302x8 */
+#define IRQ_EXTI0			6
+#define IRQ_EXTI1			7
+#define IRQ_EXTI2			8
+#define IRQ_EXTI3			9
+#define IRQ_EXTI4			10
+#define IRQ_EXTI9_5			23
+#define IRQ_EXTI15_10		40
 
 #define ENABLE 				1
 #define DISABLE 			0
