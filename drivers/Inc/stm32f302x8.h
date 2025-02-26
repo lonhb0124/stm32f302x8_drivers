@@ -261,6 +261,18 @@ typedef struct {
 #define IRQ_EXTI9_5			23
 #define IRQ_EXTI15_10		40
 
+#define NVIC_IRQ_PRI0		0
+#define NVIC_IRQ_PRI1		1
+#define NVIC_IRQ_PRI2		2
+#define NVIC_IRQ_PRI3		3
+#define NVIC_IRQ_PRI4		4
+#define NVIC_IRQ_PRI5		5
+#define NVIC_IRQ_PRI6		6
+#define NVIC_IRQ_PRI7		7
+#define NVIC_IRQ_PRI8		8
+#define NVIC_IRQ_PRI15		15
+
+
 #define ENABLE 				1
 #define DISABLE 			0
 #define SET					ENABLE

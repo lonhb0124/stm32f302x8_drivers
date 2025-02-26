@@ -358,14 +358,14 @@ void GPIO_IRQ_Interrupt_Config(uint8_t IRQNumber, uint8_t EnDi){
  *
  * Note				: N/A
  */
-void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint8_t IRQPriority) {
+void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint32_t IRQPriority) {
 
 	// 1. find out IPR register
 	uint8_t iprx = IRQNumber / 4;
 	uint8_t iprx_section = IRQNumber % 4;
 
 	uint8_t shift = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENT);
-	*(NVIC_IPR_BASE_ADDR + iprx * 4) |= (IRQPriority << (8 * iprx_section));
+	*(NVIC_IPR_BASE_ADDR + iprx) |= (IRQPriority << shift);
 }
 
 
@@ -384,5 +384,8 @@ void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint8_t IRQPriority) {
  */
 
 void GPIO_IRQ_Handling(uint8_t PinNumber){
-
+	// clear the EXTI PR register
+	if (EXTI->PR1 & (1 << PinNumber)) {
+		EXTI->PR1 |= (1 << PinNumber);
+	}
 }

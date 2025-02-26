@@ -15,7 +15,7 @@
  *
  ******************************************************************************
  */
-
+#include <string.h>
 #include <stdint.h>
 #include "stm32f302x8.h"
 
@@ -34,6 +34,10 @@ int main(void)
 	// LED test
 
 	GPIOx_Handle_t GPIO_LED, GPIO_LED2, GPIO_BUTTON;
+	memset(&GPIO_LED,0,sizeof(GPIO_LED));
+	memset(&GPIO_LED2,0,sizeof(GPIO_LED2));
+	memset(&GPIO_BUTTON,0,sizeof(GPIO_BUTTON));
+
 	GPIO_LED.pGPIOx = GPIOB; //GPIOA;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13; //GPIO_PIN_5;
 	GPIO_LED.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_OUT;
@@ -51,7 +55,7 @@ int main(void)
 
 	GPIO_BUTTON.pGPIOx = GPIOC;
 	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Number = GPIO_PIN_13;
-	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_IN;
+	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Mode = GPIO_MODE_IT_FT;
 	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_Speed = GPIO_OP_HIGH;
 	GPIO_BUTTON.GPIO_PinConfig.GPIO_Pin_PuPd = GPIO_NO_PUPD;
 
@@ -61,8 +65,14 @@ int main(void)
 	GPIO_Init(&GPIO_LED);
 	GPIO_Init(&GPIO_LED2);
 	GPIO_Init(&GPIO_BUTTON);
+
+	GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
+	// IRQ configure
+	GPIO_IRQ_Priority_Config(IRQ_EXTI15_10, NVIC_IRQ_PRI15);
+	GPIO_IRQ_Interrupt_Config(IRQ_EXTI15_10, ENABLE);
+
     /* Loop forever */
-	while(1) {
+	/*while(1) {
 		//GPIO_Toggle_Out_Pin(GPIOA, GPIO_PIN_5);
 
 		if (GPIO_Read_In_Pin(GPIOC, GPIO_PIN_13)) {
@@ -73,6 +83,12 @@ int main(void)
 			delay();
 			GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
 		}
-	}
+	}*/
+	while (1);
+}
 
+void EXTI15_10_IRQHandler(void) {
+	GPIO_IRQ_Handling(GPIO_PIN_13);
+	GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_13);
+	GPIO_Toggle_Out_Pin(GPIOB, GPIO_PIN_14);
 }
