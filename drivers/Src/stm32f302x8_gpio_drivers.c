@@ -295,11 +295,11 @@ void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
 
 
 /* ==========================================================================
- * Function			: GPIO_Init
+ * Function			: GPIO_IRQ_Interrupt_Config
  *
- * Description		: Enable or Disable peripheral clock for GPIO port
+ * Description		: Enable or Disable IRQ interrupt
  *
- * Parameter[in]	: base address of the GPIO
+ * Parameter[in]	: IRQ number
  * Parameter[in]	: Enable or Disable
  * Parameter[in]	:
  *
@@ -308,7 +308,7 @@ void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber){
  * Note				: N/A
  */
 
-void GPIO_IRQ_Config(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnDi){
+void GPIO_IRQ_Interrupt_Config(uint8_t IRQNumber, uint8_t EnDi){
 
 	if (EnDi == ENABLE) {
 		if (IRQNumber <= 31) {
@@ -344,12 +344,37 @@ void GPIO_IRQ_Config(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnDi){
 }
 
 
+
 /* ==========================================================================
- * Function			: GPIO_Init
+ * Function			: GPIO_IRQ_Priority_Config
+ *
+ * Description		: Set the IRQ priority
+ *
+ * Parameter[in]	: IRQ number
+ * Parameter[in]	: IRQ priority number
+ * Parameter[in]	:
+ *
+ * Return			: None
+ *
+ * Note				: N/A
+ */
+void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint8_t IRQPriority) {
+
+	// 1. find out IPR register
+	uint8_t iprx = IRQNumber / 4;
+	uint8_t iprx_section = IRQNumber % 4;
+
+	uint8_t shift = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENT);
+	*(NVIC_IPR_BASE_ADDR + iprx * 4) |= (IRQPriority << (8 * iprx_section));
+}
+
+
+/* ==========================================================================
+ * Function			: GPIO_IRQ_Handling
  *
  * Description		: Enable or Disable peripheral clock for GPIO port
  *
- * Parameter[in]	: base address of the GPIO
+ * Parameter[in]	: Pin number
  * Parameter[in]	: Enable or Disable
  * Parameter[in]	:
  *
