@@ -49,9 +49,9 @@ typedef struct {
 #define GPIO_MODE_OUT 		1
 #define GPIO_MODE_ALT 		2
 #define GPIO_MODE_ANALOG 	3
-#define GPIO_MODE_IT_FT 	4 // input falling edge
-#define GPIO_MODE_IT_RT 	5 // input rising edge
-#define GPIO_MODE_IT_RFT 	6 // rising/falling edge trigger
+#define GPIO_MODE_IT_FT 	4 // Interrupt falling edge
+#define GPIO_MODE_IT_RT 	5 // Interrupt rising edge
+#define GPIO_MODE_IT_RFT 	6 // Interrupt rising/falling edge trigger
 
 /* GPIO OUTPUT TYPES */
 #define GPIO_OP_TYPE_PP 	0
@@ -80,7 +80,7 @@ void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value);
 void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber);
 
 void GPIO_IRQ_Interrupt_Config(uint8_t IRQNumber, uint8_t EnDi);
-void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint8_t IRQPriority);
+void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint32_t IRQPriority);
 void GPIO_IRQ_Handling(uint8_t PinNumber);
 
 
