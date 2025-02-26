@@ -24,6 +24,11 @@
 #define NVIC_ICER2			((volatile uint32_t*)0XE000E188)
 #define NVIC_ICER3			((volatile uint32_t*)0XE000E18C)
 
+/* Arm Coretex M4 NVIC IPRx address */
+
+#define NVIC_IPR_BASE_ADDR		((volatile uint32_t*)0xE000E400)
+#define NO_PR_BITS_IMPLEMENT	4
+
 /* BASE address */
 
 #define FLASH_BASE_ADDR		0x08000000U // 32KB to 64KB

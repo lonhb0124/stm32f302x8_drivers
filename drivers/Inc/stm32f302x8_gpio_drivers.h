@@ -79,7 +79,8 @@ void GPIO_Write_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
 void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value);
 void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber);
 
-void GPIO_IRQ_Config(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnDi);
+void GPIO_IRQ_Interrupt_Config(uint8_t IRQNumber, uint8_t EnDi);
+void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint8_t IRQPriority);
 void GPIO_IRQ_Handling(uint8_t PinNumber);
 
 
