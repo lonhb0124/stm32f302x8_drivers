@@ -67,18 +67,21 @@ typedef struct {
 #define GPIO_PIN_PU			1
 #define GPIO_PIN_PD			2
 
-
+/* Init */
 void GPIO_Init(GPIOx_Handle_t *pGPIOHandle);
 void GPIO_DeInit(GPIO_REG_t *pGPIOx);
 
+/* Clock */
 void GPIO_PCLK_CTRL(GPIO_REG_t *pGPIOx, uint8_t EnDi);
 
+/* Data */
 uint8_t GPIO_Read_In_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber);
 uint16_t GPIO_Read_In_Port(GPIO_REG_t *pGPIOx);
 void GPIO_Write_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber, uint8_t Value);
 void GPIO_Write_Out_Port(GPIO_REG_t *pGPIOx, uint16_t Value);
 void GPIO_Toggle_Out_Pin(GPIO_REG_t *pGPIOx, uint8_t PinNumber);
 
+/* IRQ */
 void GPIO_IRQ_Interrupt_Config(uint8_t IRQNumber, uint8_t EnDi);
 void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint32_t IRQPriority);
 void GPIO_IRQ_Handling(uint8_t PinNumber);
