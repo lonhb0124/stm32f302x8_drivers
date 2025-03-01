@@ -116,7 +116,6 @@ void GPIO_Init(GPIOx_Handle_t *pGPIOHandle) {
  *
  * Note				: N/A
  */
-
 void GPIO_DeInit(GPIO_REG_t *pGPIOx){
 
 	if (pGPIOx == GPIOA) {
@@ -147,7 +146,6 @@ void GPIO_DeInit(GPIO_REG_t *pGPIOx){
  * Note				: N/A
  */
 void GPIO_PCLK_CTRL(GPIO_REG_t *pGPIOx, uint8_t EnDi){
-
 
 	if (EnDi == ENABLE) {
 		if (pGPIOx == GPIOA) {
@@ -375,7 +373,7 @@ void GPIO_IRQ_Priority_Config(uint8_t IRQNumber, uint32_t IRQPriority) {
  * Description		: Enable or Disable peripheral clock for GPIO port
  *
  * Parameter[in]	: Pin number
- * Parameter[in]	: Enable or Disable
+ * Parameter[in]	:
  * Parameter[in]	:
  *
  * Return			: None

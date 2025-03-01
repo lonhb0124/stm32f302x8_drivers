@@ -35,17 +35,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_rnglists 00000099  00000000  00000000  000026a0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00002178  00000000  00000000  00002739  2**0
+ 16 .debug_macro  00002192  00000000  00000000  00002739  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000010b8  00000000  00000000  000048b1  2**0
+ 17 .debug_line   000010f2  00000000  00000000  000048cb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00008595  00000000  00000000  00005969  2**0
+ 18 .debug_str    000085b5  00000000  00000000  000059bd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0000defe  2**0
+ 19 .comment      00000043  00000000  00000000  0000df72  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000288  00000000  00000000  0000df44  2**2
+ 20 .debug_frame  00000288  00000000  00000000  0000dfb8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000075  00000000  00000000  0000e1cc  2**0
+ 21 .debug_line_str 00000075  00000000  00000000  0000e240  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -819,7 +819,6 @@ void GPIO_PCLK_CTRL(GPIO_REG_t *pGPIOx, uint8_t EnDi){
  800061e:	6078      	str	r0, [r7, #4]
  8000620:	460b      	mov	r3, r1
  8000622:	70fb      	strb	r3, [r7, #3]
-
 
 	if (EnDi == ENABLE) {
  8000624:	78fb      	ldrb	r3, [r7, #3]

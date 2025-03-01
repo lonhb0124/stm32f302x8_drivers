@@ -3,3 +3,4 @@
 "./Src/sysmem.o"
 "./Startup/startup_stm32f302r8tx.o"
 "./drivers/Src/stm32f302x8_gpio_drivers.o"
+"./drivers/Src/stm32f302x8_spi_drivers.o"
