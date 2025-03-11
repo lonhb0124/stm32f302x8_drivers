@@ -22,8 +22,11 @@
  * Note				: N/A
  */
 void GPIO_Init(GPIOx_Handle_t *pGPIOHandle) {
-	// 1. configure the mode of GPIO pin
 
+	// enable the peripheral clk
+	GPIO_PCLK_CTRL(pGPIOHandle->pGPIOx, ENABLE);
+
+	// 1. configure the mode of GPIO pin
 	uint32_t temp = 0;
 
 	if (pGPIOHandle->GPIO_PinConfig.GPIO_Pin_Mode <= GPIO_MODE_ANALOG) {
