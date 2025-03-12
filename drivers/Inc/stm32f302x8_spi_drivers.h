@@ -95,7 +95,10 @@ void SPI_IRQ_Priority_Config(uint8_t IRQNumber, uint32_t IRQPriority);
 void SPI_IRQ_Handling(SPIx_Handle_t *pSPIHandle);
 
 /* */
+uint8_t SPI_Get_Flag_Status(SPI_REG_t *pSPIx, uint32_t Flag_name);
 void SPI_Peri_CTRL(SPI_REG_t *pSPIx, uint8_t EnDi);
+void SPI_SSI_Config(SPI_REG_t *pSPIx, uint8_t EnDi);
+void SPI_SSOE_Config(SPI_REG_t *pSPIx, uint8_t EnDi);
 
 
 #endif /* INC_STM32F302X8_SPI_DRIVERS_H_ */
