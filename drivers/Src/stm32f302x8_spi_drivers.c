@@ -94,14 +94,17 @@ void SPI_Init(SPIx_Handle_t *pSPIHandle) {
 	// 6. Configure the CPHA
 	temp |= pSPIHandle->SPI_Config.SPI_CPHA << SPI_CR1_CPHA;
 
+	// 7. Configure the SSM
+	temp |= pSPIHandle->SPI_Config.SPI_SSM << SPI_CR1_SSM;
+
 	pSPIHandle->pSPIx->CR1 |= temp;
 }
 
 
 
-/* ==========================================================================
+/* ========================================================================
  * Function			: SPI_DeInit
- *
+ *==
  * Description		: Reset SPI protocol
  *
  * Parameter[in]	: base address of the SPI
@@ -169,7 +172,7 @@ void SPI_Transmit_Data(SPI_REG_t *pSPIx, uint8_t *pTx_Buffer, uint32_t Len) {
 
 	}
 
-};
+}
 
 
 
@@ -208,6 +211,25 @@ void SPI_Peri_CTRL(SPI_REG_t *pSPIx, uint8_t EnDi) {
 		pSPIx->CR1 |= (1 << SPI_CR1_SPE);
 	} else {
 		pSPIx->CR1 &= ~(1 << SPI_CR1_SPE);
+	}
+
+}
+
+void SPI_SSI_Config(SPI_REG_t *pSPIx, uint8_t EnDi) {
+
+	if (EnDi == ENABLE) {
+		pSPIx->CR1 |= (1 << SPI_CR1_SSI);
+	} else {
+		pSPIx->CR1 &= ~(1 << SPI_CR1_SSI);
+	}
+}
+
+void SPI_SSOE_Config(SPI_REG_t *pSPIx, uint8_t EnDi) {
+
+	if (EnDi == ENABLE) {
+		pSPIx->CR2 |= (1 << SPI_CR2_SSOE);
+	} else {
+		pSPIx->CR2 &= ~(1 << SPI_CR2_SSOE);
 	}
 
 }
