@@ -330,10 +330,73 @@ typedef struct {
 #define SPI_SR_FRLVL		9
 #define SPI_SR_FTLVL		11
 
+/* I2C peripheral Bit Position - CR1 */
+#define I2C_CR1_PE			0
+#define I2C_CR1_TXIE		1
+#define I2C_CR1_RXIE		2
+#define I2C_CR1_ADDRIE		3
+#define I2C_CR1_NACKIE		4
+#define I2C_CR1_STOPIE		5
+#define I2C_CR1_TCIE		6
+#define I2C_CR1_ERRIE		7
+#define I2C_CR1_DNF			8
+#define I2C_CR1_ANFOFF		12
+#define I2C_CR1_TXDMAEN		14
+#define I2C_CR1_RXDMAEN		15
+#define I2C_CR1_PESBC		16
+#define I2C_CR1_NOSTRETCH	17
+#define I2C_CR1_WUPEN		18
+#define I2C_CR1_GCEN		19
+#define I2C_CR1_SMBHEN		20
+#define I2C_CR1_SMBDEN		21
+#define I2C_CR1_ALERTEN		22
+#define I2C_CR1_PECEN		23
 
+/* I2C peripheral Bit Position - CR2 */
+#define I2C_CR2_SADD		0
+#define I2C_CR2_RD_WRN		10
+#define I2C_CR2_ADD10		11
+#define I2C_CR2_HEAD10R		12
+#define I2C_CR2_START		13
+#define I2C_CR2_STOP		14
+#define I2C_CR2_NACK		15
+#define I2C_CR2_NBYTES		16
+#define I2C_CR2_RELOAD		17
+#define I2C_CR2_AUTOEND		25
+#define I2C_CR2_PECBYTE		26
+
+/* I2C peripheral Bit Position - ISR */
+#define I2C_ISR_TXE			0
+#define I2C_ISR_TXIS		1
+#define I2C_ISR_RXNE		2
+#define I2C_ISR_ADDR		3
+#define I2C_ISR_NACKF		4
+#define I2C_ISR_STOPF		5
+#define I2C_ISR_TC			6
+#define I2C_ISR_TCR			7
+#define I2C_ISR_BERR		8
+#define I2C_ISR_ARLO		9
+#define I2C_ISR_OVR			10
+#define I2C_ISR_PECERR		11
+#define I2C_ISR_TIMEOUT		12
+#define I2C_ISR_ALERT		13
+#define I2C_ISR_BUSY		15
+#define I2C_ISR_DIR			16
+#define I2C_ISR_ADDCODE		17
+
+/* I2C peripheral Bit Position - PECR */
+#define I2C_PECR_PEC		0
+
+/* I2C peripheral Bit Position - TIMINGR */
+#define I2C_TIMINGR_SCLL		0
+#define I2C_TIMINGR_SCLH		8
+#define I2C_TIMINGR_SDADEL		16
+#define I2C_TIMINGR_SCLDEL		20
+#define I2C_TIMINGR_PRESC		28
 
 
 #include "stm32f302x8_gpio_drivers.h"
 #include "stm32f302x8_spi_drivers.h"
+#include "stm32f302x8_i2c_drivers.h"
 
 #endif /* INC_STM32F302X8_H_ */

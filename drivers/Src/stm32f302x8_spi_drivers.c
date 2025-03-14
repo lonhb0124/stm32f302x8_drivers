@@ -158,6 +158,7 @@ void SPI_Transmit_Data(SPI_REG_t *pSPIx, uint8_t *pTx_Buffer, uint32_t Len) {
 		// 2. check the DFF bit in CR1
 		if (pSPIx->CR1 & (1 << SPI_CR1_CRCL)) {
 			// 16 bit
+			// load the data from TX buffer to DR
 			pSPIx->DR = *((uint16_t*) pTx_Buffer);
 			Len--;
 			Len--;
@@ -189,7 +190,31 @@ void SPI_Transmit_Data(SPI_REG_t *pSPIx, uint8_t *pTx_Buffer, uint32_t Len) {
  *
  * Note				: N/A
  */
-void SPI_Receive_Data(SPI_REG_t *pSPIx, uint8_t *pTx_Buffer, uint32_t Len);
+void SPI_Receive_Data(SPI_REG_t *pSPIx, uint8_t *pRx_Buffer, uint32_t Len) {
+
+	while (Len > 0) {
+
+		// 1. wait until RXNE set
+		while(SPI_Get_Flag_Status(pSPIx, SPI_RXNE_FLAG) == FLAG_RESET);
+
+		// 2. check the DFF bit in CR1
+		if (pSPIx->CR1 & (1 << SPI_CR1_CRCL)) {
+			// 16 bit
+			// load the data from DR to RX buffer
+			*((uint16_t*) pRx_Buffer) = pSPIx->DR;
+			Len--;
+			Len--;
+			(uint16_t*) pRx_Buffer++;
+		} else {
+			// 8 bit
+			*pRx_Buffer = pSPIx->DR;
+			Len--;
+			pRx_Buffer++;
+		}
+
+
+	}
+}
 
 
 /* ==========================================================================
