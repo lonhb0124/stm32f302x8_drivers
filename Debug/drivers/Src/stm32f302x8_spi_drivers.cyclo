@@ -3,6 +3,7 @@
 ../drivers/Src/stm32f302x8_spi_drivers.c:118:6:SPI_DeInit	3
 ../drivers/Src/stm32f302x8_spi_drivers.c:129:9:SPI_Get_Flag_Status	2
 ../drivers/Src/stm32f302x8_spi_drivers.c:151:6:SPI_Transmit_Data	4
-../drivers/Src/stm32f302x8_spi_drivers.c:208:6:SPI_Peri_CTRL	2
-../drivers/Src/stm32f302x8_spi_drivers.c:218:6:SPI_SSI_Config	2
-../drivers/Src/stm32f302x8_spi_drivers.c:227:6:SPI_SSOE_Config	2
+../drivers/Src/stm32f302x8_spi_drivers.c:193:6:SPI_Receive_Data	4
+../drivers/Src/stm32f302x8_spi_drivers.c:233:6:SPI_Peri_CTRL	2
+../drivers/Src/stm32f302x8_spi_drivers.c:243:6:SPI_SSI_Config	2
+../drivers/Src/stm32f302x8_spi_drivers.c:252:6:SPI_SSOE_Config	2
