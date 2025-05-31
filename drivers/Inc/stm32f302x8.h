@@ -256,6 +256,10 @@ typedef struct {
 #define SPI3_REG_RESET()	do {(RCC->APB1RSTR |= (1 << 15)); (RCC->APB1RSTR &= ~(1 << 15));} while(0)
 
 
+/* Clock reset Macros for I2Cx */
+#define I2C1_REG_RESET()	do {(RCC->APB1RSTR |= (1 << 21)); (RCC->APB1RSTR &= ~(1 << 21));} while(0)
+#define I2C2_REG_RESET()	do {(RCC->APB1RSTR |= (1 << 22)); (RCC->APB1RSTR &= ~(1 << 22));} while(0)
+#define I2C3_REG_RESET()	do {(RCC->APB1RSTR |= (1 << 30)); (RCC->APB1RSTR &= ~(1 << 30));} while(0)
 
 /* IRQ numbers of STM32F302x8 */
 #define IRQ_EXTI0			6
@@ -398,5 +402,6 @@ typedef struct {
 #include "stm32f302x8_gpio_drivers.h"
 #include "stm32f302x8_spi_drivers.h"
 #include "stm32f302x8_i2c_drivers.h"
+#include "stm32f302x8_usart_drivers.h"
 
 #endif /* INC_STM32F302X8_H_ */

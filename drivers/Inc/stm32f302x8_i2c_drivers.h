@@ -15,6 +15,11 @@ typedef struct {
 	uint8_t I2C_Device_Address;
 	uint8_t I2C_ACK_Control;
 	uint8_t I2C_FM_Duty_Cycle;
+	uint8_t I2C_SCLL;
+	uint8_t I2C_SCLH;
+	uint8_t I2C_SDADEL;
+	uint8_t I2C_SCLDEL;
+	uint8_t I2C_PRESC;
 } I2C_Config_t;
 
 typedef struct {
@@ -22,18 +27,26 @@ typedef struct {
 	I2C_Config_t I2C_Config;
 } I2Cx_Handle_t;
 
+/*
+ * tSCL = tSYNC1 + tSYNC2 + {[(SCLH+1) + (SCLL+1)] x (PRESC+1) x tI2CCLK}
+ * tSYNC1 + tSYNC2 >= 4 * tSCL
+ * tSDADEL = SDADEL x tPRESC + tI2CCLK = SDADEL x (PRESC+1)x tI2CCLK + tI2CCLK
+ * tSCLDEL = (SCLDEL+1) x tPRESC = (SCLDEL+1) x (PRESC+1) x tI2CCLK
+ *
+ * */
+
 /* I2C Clock Speed */
-#define I2C_SCL_SPEED_1K	100000
+#define I2C_SCL_SPEED_1K	100000 // PRESC = 1, SCLL = 0x13, SCLH = 0xF, SDADEL = 0x2, SCLDEL = 0x4
 #define I2C_SCL_SPEED_2K	200000
-#define I2C_SCL_SPEED_4K	400000
+#define I2C_SCL_SPEED_4K	400000 // PRESC = 0, SCLL = 0x9, SCLH = 0x3, SDADEL = 0x1, SCLDEL = 0x3
 
 /* I2C ACK Control */
 //#define I2C_ACK_ENABLE
 //#define I2C_ACK_DISABLE
 
 /* I2C Duty Cycle */
-#define I2C_FM_Duty_Cycle_2		0 // SCLH = 7, SCLL = 15
-#define I2C_FM_Duty_Cycle_16_9	1 // SCLH = 8, SCLL = 15
+#define I2C_FM_Duty_Cycle_5_4	0 // SCLH = 0xF, SCLL = 0x13	(19 + 1) / (15 + 1) = 5 / 4
+#define I2C_FM_Duty_Cycle_5_2	1 // SCLH = 0x3, SCLL = 0x9		(9 + 1) / (3 + 1) = 5 / 2
 
 /* Clock */
 void I2C_PCLK_CTRL(I2C_REG_t *pI2Cx, uint8_t EnDi);
